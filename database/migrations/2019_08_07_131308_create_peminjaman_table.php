@@ -15,6 +15,7 @@ class CreatePeminjamanTable extends Migration
     {
         Schema::create('peminjaman', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->String('peminjaman_kode')->unique();
             $table->unsignedBigInteger('petugas_kode');
             $table->foreign('petugas_kode')->references('id')->on('petugas')->ondelete('cascade');
             $table->unsignedBigInteger('peminjam_kode');

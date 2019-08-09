@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Auth::resource(['register'=>'false']);
+
+Route::group(['prefix' => 'admin', 'middleware' =>['auth','role:superadmin']], function () {
+    Route::resource('user', 'UserController');
+});
